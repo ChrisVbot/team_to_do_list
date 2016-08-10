@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  belongs_to :team
+  has_many :teams, :through => :appointments
   has_many :lists
   
   validates :name, presence: true
