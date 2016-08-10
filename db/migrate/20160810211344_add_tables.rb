@@ -3,10 +3,10 @@ class AddTables < ActiveRecord::Migration
     create_table :users do |t|
       t.string :username
       t.string :password
+      t.references :team, foreign_key: true
       t.timestamps
     end
     create_table :teams do |t|
-      t.references :user, foreign_key: true
       t.string :name
       t.timestamps
     end
