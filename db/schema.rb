@@ -31,8 +31,14 @@ ActiveRecord::Schema.define(version: 20160810211344) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_team_pairings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

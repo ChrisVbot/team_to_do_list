@@ -6,10 +6,16 @@ class AddTables < ActiveRecord::Migration
       t.timestamps
     end
     create_table :teams do |t|
-      t.references :user, foreign_key: true
       t.string :name
       t.timestamps
     end
+    
+    create_table :user_team_pairings do |t|
+      t.references :user, foreign_key: true
+      t.references :team, foreign_key: true
+      t.timestamps
+    end
+
     create_table :tasks do |t|
       t.references :team, foreign_key: true
       t.references :user, foreign_key: true
