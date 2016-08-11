@@ -17,18 +17,17 @@
   <title></title>
 </head>
 <body>
-  <!-- Fixed navbar  --> 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-
-      <div class="navbar-header">
-        <a href="/user" class="navbar-brand">USER PICTURE HERE?</a>
-      </div>
-
-      <div class="collapse navbar-collapse">
+  <div class="container">
+    <!-- Fixed navbar  --> 
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+        <a href="/user" class="navbar-brand">USERNAME</a>
+        </div>
+        <div class="collapse navbar-collapse">
           <!-- Login/Logout buttons with image --> 
           <form action="/logout" method="POST" class="navbar-form navbar-right">
-            <button class="btn btn-success" type="submit">Logout</button>
+            <button class="btn btn-success" type="submit"></button>
           </form>
 
           <form action="/login" method="POST" class="navbar-form navbar-right">
@@ -50,14 +49,14 @@
               </button>
             </a>
           </div>
-
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
   <div class="container">
     <div class="content">
-  <%= yield %>
-   </div>
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>
