@@ -1,4 +1,4 @@
-class AddTables < ActiveRecord::Migration
+tclass AddTables < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :username
