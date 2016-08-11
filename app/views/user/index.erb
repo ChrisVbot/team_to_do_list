@@ -2,7 +2,7 @@
   <% if current_user %>
     <% Team.where(id: current_user.teams).find_each do |team| %>
       <div class ="col-md-4">
-        <h1><%= team.name %></h1>
+        <a href="team/<%= team.id %>"><h1><%= team.name %></h1></a>
       </div>
   <% end %>
 <% end %>

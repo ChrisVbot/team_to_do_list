@@ -60,6 +60,6 @@ post '/create_team' do
 end
 
 get '/team/:team_id' do
-  @team = Team.find[:team_id]
+  @team = Team.find params[:team_id]
   erb :'team/index'
 end  
