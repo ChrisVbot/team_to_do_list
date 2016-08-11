@@ -4,5 +4,6 @@ get '/' do
 end
 
 get '/user' do 
+  @user = User.first
   erb :'user/index'
 end

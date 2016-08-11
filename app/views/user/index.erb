@@ -1,0 +1,5 @@
+<% Team.where(id: @user.teams).find_each do |team| %>
+
+  <h1><%= team.name %></h1>
+
+<% end %>
