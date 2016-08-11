@@ -1,6 +1,7 @@
 class Team < ActiveRecord::Base
 
-  has_many :users, :through => :appointments
+  has_many :pairings
+  has_many :users, through: :pairings
   has_many :tasks
   
   validates :name, presence: true
