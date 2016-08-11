@@ -70,3 +70,19 @@ get '/team/:team_id' do
   @team = Team.find params[:team_id]
   erb :'team/index'
 end  
+
+post '/list/new' do
+  @team = Team.find params[:team_id]
+  @list = List.new(
+    title: params[:title]
+    )
+  if @list.save
+      redirect "/user/#{current_user.id}"
+    else
+      #flash - something went wrong
+      redirect "/user/#{current_user.id}"
+    end
+  else
+    erb :'user/index'
+  end
+end
