@@ -10,9 +10,9 @@ class AddTables < ActiveRecord::Migration
       t.timestamps
     end
     
-    create_table :user_team_pairings do |t|
-      t.references :user, foreign_key: true
-      t.references :team, foreign_key: true
+    create_table :pairings do |t|
+      t.belongs_to :user
+      t.belongs_to :team
       t.timestamps
     end
 

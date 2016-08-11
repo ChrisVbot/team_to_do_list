@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20160810211344) do
     t.datetime "updated_at"
   end
 
+  create_table "pairings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.integer  "team_id"
     t.integer  "user_id"
@@ -32,13 +39,6 @@ ActiveRecord::Schema.define(version: 20160810211344) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "user_team_pairings", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
