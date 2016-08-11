@@ -10,7 +10,6 @@
 #DELETE/PUT/PATCH requests cannot be submitted by normal forms, must add modification - ref. Monica's lecture notes
 
 helpers do
-  
   def current_user
     @current_user = @current_user || User.find_by(id: session[:cookie_name])
   end
@@ -20,8 +19,8 @@ get '/' do
   erb :index
 end
 
-get '/user/?' do 
-  @user = User.first
+get '/user/:id/?' do 
+  @user = User.find params[:id]
   @team = Team.new
   erb :'user/index'
 end
