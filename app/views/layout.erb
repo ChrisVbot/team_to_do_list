@@ -17,11 +17,46 @@
   <title></title>
 </head>
 <body>
+  <div class="container">
+    <!-- Fixed navbar  --> 
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+        <a href="/user" class="navbar-brand">USERNAME</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <!-- Login/Logout buttons with image --> 
+          <form action="/logout" method="POST" class="navbar-form navbar-right">
+            <button class="btn btn-success" type="submit"></button>
+          </form>
 
+          <form action="/login" method="POST" class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" name="username" class="form-control" placeholder="Username" />
+            </div>
+            <div class="form-group">
+              <input type="text" name="password" class="form-control" placeholder="Password" />
+            </div>
+            <button class="btn btn-success" type="submit">
+              <span class="glyphicon glyphicon-log-in"></span> Login
+            </button>
+          </form>
+
+          <div class="navbar-form navbar-right">
+            <a href="/signup">
+              <button class="btn btn-success" type="submit">
+                <span class="glyphicon glyphicon-user"></span>Sign up
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
   <div class="container">
     <div class="content">
-  <%= yield %>
-   </div>
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>
