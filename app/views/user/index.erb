@@ -15,7 +15,7 @@
     <div class="card" style="height:200px;border-radius:5px;border-style:solid;margin-top:15px;padding: 10px 0px 10px 0px">
     <h1 class="card-title" style="align:center;text-align:center;color:#5cb85c">Create a team</h1>
     <h3 class="card-subtitle" style="align:center;text-align:center;color:#5cb85c">Team name:</h3>
-      <form method="post" action="/create_team">
+      <form method="post" action="/new_team">
         <div align="center"><input type="text" class="form-group" name="name" value="<%=@team.name%>"></div>
         <input type="hidden" name="user" value="<%= @user %>">
       </div> 
