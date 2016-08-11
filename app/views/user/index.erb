@@ -1,5 +1,22 @@
-<% Team.where(id: @user.teams).find_each do |team| %>
+<div class="container">
+  <% Team.where(id: @user.teams).find_each do |team| %>
 
-  <h1><%= team.name %></h1>
+    <div class ="col-md-4">
+      <h1><%= team.name %></h1>
+    </div>
 
-<% end %>
+  <% end %>
+</div>
+
+
+
+<div class="container">
+  <form method="post" action="/create_team">
+    <div>
+      <label>Team name: </label>
+
+      <input type="text" class="form-group" name="name" value="<%=@team.name%>">
+      <input type="hidden" name="user" value="<%= @user %>">
+    </div>
+  </form>
+</div>
