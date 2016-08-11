@@ -70,3 +70,37 @@ get '/team/:team_id' do
   @team = Team.find params[:team_id]
   erb :'team/index'
 end  
+
+
+# ost "/articles/:article_id/comments" do
+#   @article = Article.find(params[:article_id])
+#   comment = @article.comments.create(content: params[:content])
+#   if comment.persisted?
+#     redirect "/articles/#{@article.id}"
+#   else
+#     "Failed to create comment"
+#   end
+# end
+
+post '/team/:team_id/new' do
+  @team = Team.find params[:team_id]
+  @list = List.new(
+    title: params[:title]
+    )
+    @list.user_id = current_user.id
+    @list.team_id = @team.id
+    if @list.save
+      #flash - team saved
+      redirect "/team/#{@team.id}"
+    else
+      redirect "/team/#{@team.id}"
+    end
+end  
+
+delete '/team/:list_id' do
+  list = List.find params[:list_id]
+  list.destroy
+  redirect "/team/12"
+end
+
+
