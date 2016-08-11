@@ -13,11 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20160810211344) do
 
-  create_table "items", force: :cascade do |t|
-    t.integer  "task_id"
-    t.string   "content"
+  create_table "lists", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "complete"
+    t.boolean  "priority"
   end
 
   create_table "pairings", force: :cascade do |t|
@@ -28,13 +31,10 @@ ActiveRecord::Schema.define(version: 20160810211344) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer  "team_id"
-    t.integer  "user_id"
+    t.integer  "list_id"
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "complete"
-    t.boolean  "priority"
   end
 
   create_table "teams", force: :cascade do |t|

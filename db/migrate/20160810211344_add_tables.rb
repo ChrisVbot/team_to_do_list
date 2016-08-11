@@ -16,16 +16,16 @@ class AddTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :tasks do |t|
+    create_table :lists do |t|
       t.references :team, foreign_key: true
       t.references :user, foreign_key: true
-      t.string :content
+      t.string :title
       t.timestamps
       t.boolean :complete
       t.boolean :priority
     end
-    create_table :items do|t|
-      t.references :task, foreign_key: true
+    create_table :tasks do|t|
+      t.references :list, foreign_key: true
       t.string :content
       t.timestamps
     end

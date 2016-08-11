@@ -2,7 +2,7 @@
   <% if current_user %>
     <% Team.where(id: @user.teams).find_each do |team| %>
       <div class ="col-md-4">
-        <a href="team/<%= team.id %>"><h1><%= team.name %></h1></a>
+        <a href="/team/<%= team.id %>"><h1><%= team.name %></h1></a>
       </div>
   <% end %>
 <% end %>
@@ -11,7 +11,7 @@
 
 
 <div class="container">
-  <form method="post" action="/create_team">
+  <form method="post" action="/new_team">
     <div>
       <label>New team name: </label>
 

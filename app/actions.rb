@@ -13,6 +13,13 @@ helpers do
   def current_user
     @current_user = @current_user || User.find_by(id: session[:cookie_name])
   end
+
+  def get_username(input)
+    @get_username = User.find params(id: input.id)
+      if @get_username[0]
+        @get_username[0].username
+    end
+  end
 end
 
 get '/' do
@@ -38,7 +45,8 @@ post '/login/?' do
     end
 end
 
-post '/create_team' do
+#TODO: implement RESTful principles
+post '/new_team' do
   @team = Team.new(
     name: params[:name]
     )
@@ -48,10 +56,10 @@ post '/create_team' do
     #below verifies whether the pairing was created correctly
     if new_team.persisted?
     #flash - thanks for creating a team
-      redirect '/user'
+      redirect "/user/#{current_user.id}"
     else
       #flash - something went wrong
-      redirect '/user'
+      redirect "/user/#{current_user.id}"
     end
   else
     erb :'user/index'
