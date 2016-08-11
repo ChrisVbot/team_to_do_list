@@ -1,6 +1,6 @@
 <div class="container">
   <% if current_user %>
-    <% Team.where(id: current_user.teams).find_each do |team| %>
+    <% Team.where(id: @user.teams).find_each do |team| %>
       <div class ="col-md-4">
         <a href="team/<%= team.id %>"><h1><%= team.name %></h1></a>
       </div>
