@@ -1,20 +1,19 @@
 <div class="container">
-  <% Team.where(id: @user.teams).find_each do |team| %>
-
-    <div class ="col-md-4">
-      <h1><%= team.name %></h1>
-    </div>
-
-  <% end %>
+  <div style="height:100px;"></div>
 </div>
 
-
+<div class="container">
+  <% Team.where(id: @user.teams).find_each do |team| %>
+    <div class ="col-md-4">
+      <h1><a href="/team/<%= team.id %>"><%= team.name %></a></h1>
+    </div>
+  <% end %>
+</div>
 
 <div class="container">
   <form method="post" action="/create_team">
     <div>
       <label>Team name: </label>
-
       <input type="text" class="form-group" name="name" value="<%=@team.name%>">
       <input type="hidden" name="user" value="<%= @user %>">
     </div>
