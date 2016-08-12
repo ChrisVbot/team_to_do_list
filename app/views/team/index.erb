@@ -25,8 +25,13 @@
               <li><%= task.content %> </li>
               <% unless task.complete %>
               <form method="POST" action="/team/<%= task.id %>/check">
-              <input type="submit" value="Task Complete"></input>
+         <!--      <input type="submit" value="Task Complete"></input> -->
+              
+              <input type='hidden' name='complete' value='false' />
+              <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
               </form>
+
+
               <% end %>
               <form method="POST" action="/team/<%= task.id %>/delete">
                 <input type="hidden" name="_method" value="DELETE"></input>

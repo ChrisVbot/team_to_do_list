@@ -129,7 +129,7 @@ end
 
 post '/team/:task_id/check' do
   @task = Task.find params[:task_id]
-  @task.complete = true
+  @task.complete = params[:complete]
   if @task.save
     redirect back
   else
