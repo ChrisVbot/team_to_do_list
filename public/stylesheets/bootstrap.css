@@ -12,10 +12,10 @@ Custom classes
 .list {
   border-radius: 8px;
   border-style: solid;
+  border-color: #5cb85c;
   margin-top: 15px;
   padding: 10px 0px 10px 0px;
   text-align: center;
-  color: #5cb85c;
 }
 
 .task {
