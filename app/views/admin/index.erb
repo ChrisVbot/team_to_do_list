@@ -7,11 +7,24 @@
   <div class="col-md-4">
     <div class="user_card">
       <h1><a class="user_link" href="/team/<%= user.id %>"> <%= user.username %></a> </h1>
-        <h4> <% user.teams.each do |name|%>
-              <a class="user_link" href="/team/<%= name.id %>"<p><%= name.name %></p></a>
+      <p><h4>
+        has created <%= user.lists.count %> to-do lists and <%= user.tasks.count %> tasks.
+      </h4></p>
+        <h4><%= user.username %> is a member of:
+        <p><% user.teams.each do |team|%></p>
+              <a class="user_link" href="/team/<%= team.id %>"<p><%= team.name %></p></a>
+                <% completed = team.lists.all.count('complete') %>
+                <% uncompleted = team.lists.all.count(:conditions => "complete == nil") %>
+                  <% if team.lists.all.count == 0 %>
+                    <h6>No active lists</h6>
+                  <% else %>
+                    <h6><%= completed %> of <%= uncompleted %> to-do lists complete</h6>
+                  <% end %>
             <% end %>
         </h4>
     </div>
   </div>
   <% end %>
 </div>
+
+<!-- has an average of % complete, avg time to completion is: time -->
