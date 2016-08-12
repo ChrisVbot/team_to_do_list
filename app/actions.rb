@@ -17,6 +17,10 @@ helpers do
   end
 
 end
+  
+  def admin
+    admin = admin || User.find_by(id: session[:admin])
+  end
 
 get '/' do
   erb :index
@@ -137,9 +141,9 @@ post '/team/:team_id/new_member' do
   end
 end
 
-
 get '/admin/?' do 
-  @user = User.first
-  session[:admin] = @user.id
+  admin = User.first
+  session[:admin] = admin.id
   erb :'admin/index'
 end
+
