@@ -25,7 +25,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="/user/<%=current_user%>" class="navbar-brand">USERNAME</a>
+          <a href="/user/<%=current_user.id%>" class="navbar-brand"><%= current_user.username %></a>
         </div>
         <div class="collapse navbar-collapse">
         <!-- Login/Logout buttons with image -->
