@@ -1,89 +1,99 @@
-<div class="container">
-  <% if current_user %>
-    <div class ="col-md-4">
-      <h1><%= @team.name %></h1>
-    </div>
+<!-- Show the team name -->
+<% if current_user %>
+<div class="row">
+  <div class ="col-md-4">
+    <h1><%= @team.name %></h1>
+  </div>
+</div>
 <% end %>
 
 
-<!-- TODO: update class name -->
-<div class ="members">
-<% @team.users.each do |name| %>
-  <h4><%= name.username %></h4>
-<% end %>
+<!-- List the team members' names -->
+<div class="row">
+  <div class ="col-md-2">
+    <% @team.users.each do |name| %>
+    <h4  style="display:inline;" ><%= name.username %></h4>
+    <% end %>
+  </div>
 </div>
 
 
+<!-- Add a new team member -->
+<div class="row">
+<div class="container">
+  <form method="POST" action="/team/<%= @team.id %>/new_member">
+    <div>
+      <label>Add a new member to <%= @team.name %>: </label>
+      <input type="text" class="form-group" name="username">
+      <input type="hidden" name="team_id" value="<%=@team.id%>">
+    </div>
+  </form>
+</div>
+</div>
+
+
+<!-- Create a new list -->
+<div class="container">
+  <form method="POST" action="/team/<%= @team.id %>/new_list">
+    <div>
+      <label>Enter new list title: </label>
+      <input type="text" class="form-group" name="title">
+      <input type="hidden" name="user_id" value="<%=current_user.id%>">
+    </div>
+  </form>
+</div>
+
+
+<!-- List all of the todo lists -->
 <div class="container">
   <% if current_user %>
-    <% @team.lists.each do |list| %>
-      <div class="col-md-4">
-        <% unless list.complete %>
-          <br><strong><%= list.title %></strong>
-            <small>(posted by: <%= list.user.username %>)</small>
-            <% list.tasks.each do |task| %>
-            <ul>
-              <li><%= task.content %>
-                <% unless task.user == nil %>
-                  <small>(added by: <%= task.user.username %>)</small>
-                <% end %>
-              </li>
-              <% unless task.complete %>
-              <form method="POST" action="/team/<%= task.id %>/check">
-              <input type="submit" value="Task Complete"></input>
-              </form>
-              <% end %>
-              <form method="POST" action="/team/<%= task.id %>/delete">
-                <input type="hidden" name="_method" value="DELETE"></input>
-                <input type="submit" value="Delete Task"></input>
-              </form>
-            </ul>
-            <%end%> 
-      <div id="new_task">
-        <form method="POST" action="/team/<%= list.id %>/new">
-          <label>Enter new task: </label>
-          <input type="text" class="form-group" name="content">
-          <input type="hidden" name="user_id" value="<%=current_user.id%>">
-        </form>
-      </div>
-    </div>
-      <div id ="complete">
-        <form method="POST" action="/team/<%= list.id %>/complete">
-          <input type="submit" value="List Complete">
-        </form>
-      </div>
-      <div id="delete">
-        <form method="POST" action="/team/<%= list.id %>">
-          <input type="hidden" name="_method" value="DELETE"></input>
-          <input type="hidden" name="team_id" value="<%= @team.id%>"></input>
-          <input type="submit" value="Delete List"></input>
-        </form>
-      </div>
+
+  <% @team.lists.each do |list| %>
+  <div class="col-md-3">
+    <strong><%= list.title %></strong>
+    <small>(posted by: <%= list.user.username %>)</small>
+
+    <% list.tasks.each do |task| %>
+    <ul>
+      <li><%= task.content %>
+        <% unless task.user == nil %>
+        <small>(added by: <%= task.user.username %>)</small>
         <% end %>
+      </li>
+
+      <% unless task.complete %>
+      <form method="POST" action="/team/<%= task.id %>/check">
+        <input type="submit" value="Task Complete"></input>
+      </form>
       <% end %>
+      <form method="POST" action="/team/<%= task.id %>/delete">
+        <input type="hidden" name="_method" value="DELETE"></input>
+        <input type="submit" value="Delete Task"></input>
+      </form>
+    </ul> 
+
+    <div id="new_task">
+      <form method="POST" action="/team/<%= list.id %>/new">
+        <label>Enter new task: </label>
+        <input type="text" class="form-group" name="content">
+        <input type="hidden" name="user_id" value="<%=current_user.id%>">
+      </form>
+    </div>
+  </div>
+  <div id ="complete">
+    <form method="POST" action="/team/<%= list.id %>/complete">
+      <input type="submit" value="List Complete">
+    </form>
+  </div>
+  <div id="delete">
+    <form method="POST" action="/team/<%= list.id %>">
+      <input type="hidden" name="_method" value="DELETE"></input>
+      <input type="hidden" name="team_id" value="<%= @team.id%>"></input>
+      <input type="submit" value="Delete List"></input>
+    </form>
+    </div>
+  <% end %>
+  </div>
+  <% end %>
   <% end %>
 </div>
-
-
-  <div class="container">
-    <form method="POST" action="/team/<%= @team.id %>/new_list">
-      <div>
-        <label>Enter new list title: </label>
-        <input type="text" class="form-group" name="title">
-         <input type="hidden" name="user_id" value="<%=current_user.id%>">
-      </div>
-    </form>
-</div>
-    
-  <div class="container">
-    <form method="POST" action="/team/<%= @team.id %>/new_member">
-      <div>
-        <label>Add a new member to <%= @team.name %>: </label>
-        <input type="text" class="form-group" name="username">
-         <input type="hidden" name="team_id" value="<%=@team.id%>">
-      </div>
-    </form>
-</div>
-    
-
-
