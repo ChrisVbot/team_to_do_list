@@ -38,11 +38,14 @@ post '/create%20team' do
     )
   # binding.pry
   if @team.save
-    current_user.pairings.create(team: @team)
+    new_team = current_user.pairings.create(team: @team)
+    if new_team.persisted?
     #flash - thanks for creating a team
-    redirect back
+      redirect "/user/#{current_user.id}"
+    end
   else
-    erb :'user/index'# 
+    #flash 
+      redirect back 
   end
 end
 
