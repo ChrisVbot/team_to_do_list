@@ -16,12 +16,6 @@ helpers do
     current_user = current_user || User.find_by(id: session[:user_id])
   end
 
-  def get_username(input)
-    @get_username = User.find params(id: input.id)
-      if @get_username[0]
-        @get_username[0].username
-    end
-  end
 end
 
 get '/' do
@@ -51,19 +45,6 @@ post '/user/:id/new' do
   end
 end
 
-post '/login/?' do
-  @user = User.where(username: params[:username]).where(password: params[:password])
-    if @user.length > 0
-      session[:cookie_name] = @user[0].id
-
-      # flash[:notice] = "Thanks for logging in, #{@user[0].username}!"
-      redirect '/user/'
-    else 
-      # flash[:notice] = "Incorrect username or password! Please try again."
-      redirect '/user/'
-    end
-end
-
 
 get '/team/:team_id' do
   @team = Team.find params[:team_id]
@@ -74,7 +55,8 @@ end
 post '/team/:team_id/new%20list' do
   @team = Team.find params[:team_id]
   @list = List.new(
-    title: params[:title]
+    title: params[:title],
+    user_id: current_user.id
     )
     @list.team_id = @team.id
     if @list.save
@@ -99,7 +81,8 @@ post '/team/:list_id/new' do
   @list = List.find params[:list_id]
   @task = Task.new(
     content: params[:content],
-    list_id: params[:list_id]
+    list_id: params[:list_id],
+    user_id: current_user.id
     )
     if @task.save
       redirect back
@@ -138,10 +121,23 @@ post '/team/:task_id/check' do
 end
 
 
+post '/team/:team_id/member' do
+  team = Team.find params[:team_id]
+  new_team_member = User.where(username: params[:username])
+    if new_team_member[0] == nil
+      redirect "/team/#{team.id}"
+    elsif team.users.ids.include? new_team_member[0].id
+      #flash - user already on this team
+      redirect "/team/#{team.id}"
+    elsif new_team_member[0].pairings.create(team: team)
+      redirect "/team/#{team.id}"
+    else
+      redirect "team/#{team.id}"
+  end
+end
 
 
 
 
 
-
-
+# new_team = user.pairings.create(team: @team)
