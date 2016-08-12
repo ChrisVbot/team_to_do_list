@@ -52,7 +52,7 @@ get '/team/:team_id' do
 end  
 
 #TODO implement user_id into list submission
-post '/team/:team_id/new%20list' do
+post '/team/:team_id/new_list' do
   @team = Team.find params[:team_id]
   @list = List.new(
     title: params[:title],
@@ -121,7 +121,7 @@ post '/team/:task_id/check' do
 end
 
 
-post '/team/:team_id/member' do
+post '/team/:team_id/new_member' do
   team = Team.find params[:team_id]
   new_team_member = User.where(username: params[:username])
     if new_team_member[0] == nil
@@ -136,8 +136,3 @@ post '/team/:team_id/member' do
   end
 end
 
-
-
-
-
-# new_team = user.pairings.create(team: @team)
