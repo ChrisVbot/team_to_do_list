@@ -1,4 +1,4 @@
-bob = User.create!(username: "Bob", password:"12345")
+rbob = User.create!(username: "Bob", password:"12345")
 jonny = User.create!(username: "Jonny", password:"12345")
 billybob = User.create!(username: "Billybob", password:"12345")
 jake = User.create!(username: "Jake", password:"12345")

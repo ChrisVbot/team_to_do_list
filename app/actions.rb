@@ -51,7 +51,7 @@ get '/team/:team_id' do
 end  
 
 
-post '/team/:team_id/new' do
+post '/team/:team_id/new%20list' do
   @team = Team.find params[:team_id]
   @list = List.new(
     title: params[:title]
@@ -70,4 +70,19 @@ delete '/team/:list_id' do
   list.destroy
   redirect back
 end
+
+post '/team/:list_id/new' do
+  @list = List.find params[:list_id]
+  @task = Task.new(
+    content: params[:content],
+    list_id: params[:list_id]
+    )
+    if @task.save
+      redirect back
+    else
+      redirect back
+    end
+end
+
+
 
