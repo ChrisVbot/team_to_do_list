@@ -1,4 +1,4 @@
-<div class="container">
+  <div class="container">
   <% if current_user %>
     <div class ="col-md-4">
       <h1><%= @team.name %></h1>
@@ -23,30 +23,28 @@
             <small>(posted by: <%= list.user.username %>)</small>
             <% list.tasks.each do |task| %>
             <ul>
-<<<<<<< HEAD
-              <li><%= task.content %> </li>
-            
-=======
               <li><%= task.content %>
                 <% unless task.user == nil %>
                   <small>(added by: <%= task.user.username %>)</small>
                 <% end %>
               </li>
-              <% unless task.complete %>
->>>>>>> b3e73556dd114e832c3fafe0400a5e1b519c2154
+            <!--   <input class="complete_checkbox" type='hidden' name='complete' value='false' /> -->
               <form method="POST" action="/team/<%= task.id %>/check">
-              <input class="complete_checkbox" type='hidden' name='complete' value='false' />
-              <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
+                  <div class="checkboxes">
+                    <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
+                    <% if task.complete == nil %>
+                      <label for='complete'>Complete!</label>
+                    <% else %>
+                      <label for='complete' class="highlight">Complete!</label>
+                    <% end %>
+                  </div>
               </form>
-
-
-           
-              <form method="POST" action="/team/<%= task.id %>/delete">
+               <form method="POST" action="/team/<%= task.id %>/delete">
                 <input type="hidden" name="_method" value="DELETE"></input>
                 <input type="submit" value="Delete Task"></input>
               </form>
             </ul>
-          <%end%> 
+            <%end%> 
       <div id="new_task">
         <form method="POST" action="/team/<%= list.id %>/new">
           <label>Enter new task: </label>
@@ -73,7 +71,7 @@
 </div>
 
 
-  <div class="container">
+<div class="container">
     <form method="POST" action="/team/<%= @team.id %>/new_list">
       <div>
         <label>Enter new list title: </label>
@@ -83,7 +81,7 @@
     </form>
 </div>
     
-  <div class="container">
+<div class="container">
     <form method="POST" action="/team/<%= @team.id %>/new_member">
       <div>
         <label>Add a new member to <%= @team.name %>: </label>
@@ -92,6 +90,4 @@
       </div>
     </form>
 </div>
-    
-
 
