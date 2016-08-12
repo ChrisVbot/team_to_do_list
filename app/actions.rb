@@ -56,7 +56,6 @@ post '/team/:team_id/new' do
   @list = List.new(
     title: params[:title]
     )
-    @list.user_id = current_user.id
     @list.team_id = @team.id
     if @list.save
       #flash - team saved
