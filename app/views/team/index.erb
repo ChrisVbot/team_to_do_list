@@ -20,9 +20,14 @@
       <div class="col-md-4">
         <% unless list.complete %>
           <br><strong><%= list.title %></strong>
+            <small>(posted by: <%= list.user.username %>)</small>
             <% list.tasks.each do |task| %>
             <ul>
-              <li><%= task.content %> </li>
+              <li><%= task.content %>
+                <% unless task.user == nil %>
+                  <small>(added by: <%= task.user.username %>)</small>
+                <% end %>
+              </li>
               <% unless task.complete %>
               <form method="POST" action="/team/<%= task.id %>/check">
               <input type="submit" value="Task Complete"></input>
@@ -38,6 +43,7 @@
         <form method="POST" action="/team/<%= list.id %>/new">
           <label>Enter new task: </label>
           <input type="text" class="form-group" name="content">
+          <input type="hidden" name="user_id" value="<%=current_user.id%>">
         </form>
       </div>
     </div>
@@ -64,10 +70,20 @@
       <div>
         <label>Enter new list title: </label>
         <input type="text" class="form-group" name="title">
+         <input type="hidden" name="user_id" value="<%=current_user.id%>">
       </div>
     </form>
 </div>
     
-
+  <div class="container">
+    <form method="POST" action="/team/<%= @team.id %>/member">
+      <div>
+        <label>Add a new member to <%= @team.name %>: </label>
+        <input type="text" class="form-group" name="username">
+         <input type="hidden" name="team_id" value="<%=@team.id%>">
+      </div>
+    </form>
+</div>
+    
 
 

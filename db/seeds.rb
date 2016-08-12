@@ -27,11 +27,11 @@ chores = List.create!(team_id: bobcats.id, user_id: bob.id, title: "Family chore
 project = List.create!(team_id: lighthouses.id, user_id: jonny.id, title: "Group project")
 challenge = List.create!(team_id: lighthouses.id, user_id: jonny.id, title: "Team challenge")
 
-today.tasks.create!(content: "Wash the dishes")
-today.tasks.create!(content: "Do laundry")
-chores.tasks.create!(content: "Eat hamburgers")
-chores.tasks.create!(content: "Go to school")
-project.tasks.create!(content: "Learn to code")
-challenge.tasks.create!(content: "Eat")
-today.tasks.create!(content: "Sleep")
+today.tasks.create!(content: "Wash the dishes", user_id: bob.id)
+today.tasks.create!(content: "Do laundry", user_id: bob.id)
+chores.tasks.create!(content: "Eat hamburgers", user_id: jonny.id)
+chores.tasks.create!(content: "Go to school", user_id: maryjane.id)
+project.tasks.create!(content: "Learn to code", user_id: spiderman.id)
+challenge.tasks.create!(content: "Eat", user_id: jake.id)
+today.tasks.create!(content: "Sleep", user_id: billybob.id)
 
