@@ -19,28 +19,33 @@
   <% if current_user %>
       <% @team.lists.each do |list| %>
         <div class="col-md-4">
-          <%= list.title %>
+          <strong><%= list.title %></strong>
           <% list.tasks.each do |task| %>
-            <%= task.content %>
+            <ul>
+              <li><%= task.content %></li>
+            </ul>
           <%end%>
+      <form method="POST" action="/team/<%= list.id %>/new">
+        <label>Enter new task: </label>
+        <input type="text" class="form-group" name="content">
+      </form>
       <form method="POST" action="/team/<%= list.id %>">
         <input type="hidden" name="_method" value="DELETE"></input>
         <input type="hidden" name="team_id" value="<%= @team.id%>"</input>
-        <input type="submit" value="Delete"></input>
+        <input type="submit" value="Delete List"></input>
     </form>
-          </div>
+        </div>
       <% end %>
 <% end %>
 
 
   <div class="container">
-    <form method="POST" action="/team/<%= @team.id %>/new">
+    <form method="POST" action="/team/<%= @team.id %>/new%20list">
       <div>
         <label>Enter new list title: </label>
         <input type="text" class="form-group" name="title">
       </div>
     </form>
-
 </div>
     
 

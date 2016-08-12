@@ -32,6 +32,23 @@ get '/user/:id/?' do
   erb :'user/index'
 end
 
+post '/create%20team' do
+  @team = Team.new(
+    name: params[:name]
+    )
+  # binding.pry
+  if @team.save
+    new_team = current_user.pairings.create(team: @team)
+    if new_team.persisted?
+    #flash - thanks for creating a team
+      redirect "/user/#{current_user.id}"
+    end
+  else
+    #flash 
+      redirect back 
+  end
+end
+
 post '/login/?' do
   @user = User.where(username: params[:username]).where(password: params[:password])
     if @user.length > 0
@@ -45,13 +62,14 @@ post '/login/?' do
     end
 end
 
+
 get '/team/:team_id' do
   @team = Team.find params[:team_id]
   erb :'team/index'
 end  
 
 
-post '/team/:team_id/new' do
+post '/team/:team_id/new%20list' do
   @team = Team.find params[:team_id]
   @list = List.new(
     title: params[:title]
@@ -70,4 +88,19 @@ delete '/team/:list_id' do
   list.destroy
   redirect back
 end
+
+post '/team/:list_id/new' do
+  @list = List.find params[:list_id]
+  @task = Task.new(
+    content: params[:content],
+    list_id: params[:list_id]
+    )
+    if @task.save
+      redirect back
+    else
+      redirect back
+    end
+end
+
+
 
