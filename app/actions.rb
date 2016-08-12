@@ -32,6 +32,20 @@ get '/user/:id/?' do
   erb :'user/index'
 end
 
+post '/create%20team' do
+  @team = Team.new(
+    name: params[:name]
+    )
+  # binding.pry
+  if @team.save
+    current_user.pairings.create(team: @team)
+    #flash - thanks for creating a team
+    redirect back
+  else
+    erb :'user/index'# 
+  end
+end
+
 post '/login/?' do
   @user = User.where(username: params[:username]).where(password: params[:password])
     if @user.length > 0
@@ -44,6 +58,7 @@ post '/login/?' do
       redirect '/user/'
     end
 end
+
 
 get '/team/:team_id' do
   @team = Team.find params[:team_id]
