@@ -72,16 +72,6 @@ get '/team/:team_id' do
 end  
 
 
-# ost "/articles/:article_id/comments" do
-#   @article = Article.find(params[:article_id])
-#   comment = @article.comments.create(content: params[:content])
-#   if comment.persisted?
-#     redirect "/articles/#{@article.id}"
-#   else
-#     "Failed to create comment"
-#   end
-# end
-
 post '/team/:team_id/new' do
   @team = Team.find params[:team_id]
   @list = List.new(
