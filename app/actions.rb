@@ -45,19 +45,6 @@ post '/user/:id/new' do
   end
 end
 
-post '/login/?' do
-  @user = User.where(username: params[:username]).where(password: params[:password])
-    if @user.length > 0
-      session[:cookie_name] = @user[0].id
-
-      # flash[:notice] = "Thanks for logging in, #{@user[0].username}!"
-      redirect '/user/'
-    else 
-      # flash[:notice] = "Incorrect username or password! Please try again."
-      redirect '/user/'
-    end
-end
-
 
 get '/team/:team_id' do
   @team = Team.find params[:team_id]
