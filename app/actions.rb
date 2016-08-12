@@ -45,27 +45,6 @@ post '/login/?' do
     end
 end
 
-#TODO: implement RESTful principles
-post '/new_team' do
-  @team = Team.new(
-    name: params[:name]
-    )
-  # binding.pry
-  if @team.save
-    new_team = current_user.pairings.create(team: @team)
-    #below verifies whether the pairing was created correctly
-    if new_team.persisted?
-    #flash - thanks for creating a team
-      redirect "/user/#{current_user.id}"
-    else
-      #flash - something went wrong
-      redirect "/user/#{current_user.id}"
-    end
-  else
-    erb :'user/index'
-  end
-end
-
 get '/team/:team_id' do
   @team = Team.find params[:team_id]
   erb :'team/index'
@@ -92,5 +71,4 @@ delete '/team/:list_id' do
   list.destroy
   redirect back
 end
-
 
