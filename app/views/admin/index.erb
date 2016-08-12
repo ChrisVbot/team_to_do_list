@@ -1,0 +1,17 @@
+<div class="container">
+  <div style="height:100px;"></div>
+</div>
+
+<div class="container">
+  <% User.all.each do |user| %>
+  <div class="col-md-4">
+    <div class="user_card">
+      <h1><a class="user_link" href="/team/<%= user.id %>"> <%= user.username %></a> </h1>
+        <h4> <% user.teams.each do |name|%>
+              <a class="user_link" href="/team/<%= name.id %>"<p><%= name.name %></p></a>
+            <% end %>
+        </h4>
+    </div>
+  </div>
+  <% end %>
+</div>

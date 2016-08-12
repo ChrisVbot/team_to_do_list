@@ -136,3 +136,11 @@ post '/team/:team_id/new_member' do
   end
 end
 
+
+get '/admin/?' do 
+  @user = User.first
+  session[:admin] = @user.id
+  erb :'admin/index'
+end
+
+
