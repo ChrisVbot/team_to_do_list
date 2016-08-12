@@ -31,8 +31,8 @@
             <!--   <input class="complete_checkbox" type='hidden' name='complete' value='false' /> -->
               <form method="POST" action="/team/<%= task.id %>/check">
                   <div class="checkboxes">
-                    <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
                     <% if task.complete == nil %>
+                      <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
                       <label for='complete'>Complete!</label>
                     <% else %>
                       <label for='complete' class="highlight">Complete!</label>
