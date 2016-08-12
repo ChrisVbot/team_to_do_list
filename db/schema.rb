@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812030404) do
+ActiveRecord::Schema.define(version: 20160812185200) do
 
   create_table "lists", force: :cascade do |t|
     t.integer  "team_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160812030404) do
     t.datetime "updated_at"
     t.boolean  "complete"
     t.boolean  "priority"
+    t.integer  "user_id"
   end
 
   create_table "teams", force: :cascade do |t|
