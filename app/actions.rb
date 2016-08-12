@@ -32,16 +32,15 @@ get '/user/:id/?' do
   erb :'user/index'
 end
 
-post '/create%20team' do
-  @team = Team.new(
-    name: params[:name]
-    )
+post '/user/:id/new' do
+  user = User.find params[:id]
+  @team = Team.new(name: params[:name])
   # binding.pry
   if @team.save
-    new_team = current_user.pairings.create(team: @team)
+    new_team = user.pairings.create(team: @team)
     if new_team.persisted?
     #flash - thanks for creating a team
-      redirect "/user/#{current_user.id}"
+      redirect "/user/#{user.id}"
     end
   else
     #flash 
