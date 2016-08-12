@@ -100,7 +100,7 @@ end
 delete '/team/:list_id' do
   list = List.find params[:list_id]
   list.destroy
-  redirect "/team/12"
+  redirect back
 end
 
 
