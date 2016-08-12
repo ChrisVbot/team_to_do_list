@@ -17,10 +17,10 @@
     <div class="new_team">
     <h1>Create a team</h1>
     <h3>Team name:</h3>
-      <form method="post" action="/new_team">
+      <form method="post" action="/user/<%= @user.id %>/new">
         <div align="center"><input type="text" class="form-group" name="name" value="<%=@team.name%>"></div>
         <input type="hidden" name="user" value="<%= @user %>"> 
       </form>
     </div>
   </div>
-</div>c
+</div>

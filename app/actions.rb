@@ -9,9 +9,12 @@
 
 #DELETE/PUT/PATCH requests cannot be submitted by normal forms, must add modification - ref. Monica's lecture notes
 
+#Can have multiple inputs when POSTing, e.g. from James' lecture. Good for to-do list to add multiple things
+
 helpers do
   def current_user
-    @current_user = @current_user || User.find_by(id: session[:cookie_name])
+    @current_user = @current_user || User.find_by(id: session[:user_id])
+    @current_user.id
   end
 
   def get_username(input)
@@ -29,6 +32,7 @@ end
 get '/user/:id/?' do 
   @user = User.find params[:id]
   @team = Team.new
+  session[:user_id] = @user.id
   erb :'user/index'
 end
 
@@ -67,7 +71,7 @@ get '/team/:team_id' do
   erb :'team/index'
 end  
 
-
+#TODO implement user_id into list submission
 post '/team/:team_id/new%20list' do
   @team = Team.find params[:team_id]
   @list = List.new(
