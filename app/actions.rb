@@ -84,8 +84,12 @@ end
 
 delete '/team/:list_id' do
   list = List.find params[:list_id]
-  list.destroy
-  redirect back
+  if 
+    list.destroy
+    redirect back
+  else
+    redirect back
+  end
 end
 
 post '/team/:list_id/new' do
@@ -100,6 +104,41 @@ post '/team/:list_id/new' do
       redirect back
     end
 end
+
+post '/team/:list_id/complete' do
+  @list = List.find params[:list_id]
+  @list.complete = true
+  if @list.save
+    redirect back
+  else
+    redirect back
+  end
+end
+
+delete '/team/:task_id/delete' do
+  @task = Task.find params[:task_id]
+  if @task.destroy
+    redirect back
+  else
+    redirect back
+  end
+end
+
+post '/team/:task_id/check' do
+  @task = Task.find params[:task_id]
+  @task.complete = true
+  if @task.save
+    redirect back
+  else
+    redirect back
+  end
+end
+
+
+
+
+
+
 
 
 
