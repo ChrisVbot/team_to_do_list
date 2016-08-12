@@ -6,7 +6,7 @@
   <% User.all.each do |user| %>
   <div class="col-md-4">
     <div class="user_card">
-      <h1><a class="user_link" href="/team/<%= user.id %>"> <%= user.username %></a> </h1>
+      <h1><a class="user_link" href="/user/<%= user.id %>"> <%= user.username %></a> </h1>
       <p><h4>
         has created <%= user.lists.count %> to-do lists and <%= user.tasks.count %> tasks.
       </h4></p>
@@ -16,9 +16,9 @@
                 <% completed = team.lists.all.count('complete') %>
                 <% uncompleted = team.lists.all.count(:conditions => "complete == nil") %>
                   <% if team.lists.all.count == 0 %>
-                    <h6>No active lists</h6>
+                    <h6>No lists created yet</h6>
                   <% else %>
-                    <h6>(<%= completed %> of <%= uncompleted %> to-do lists complete)</h6>
+                    <h6><%= completed %> of <%= uncompleted %> to-do lists completed</h6>
                   <% end %>
             <% end %>
         </h4>
