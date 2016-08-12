@@ -23,7 +23,26 @@
           <% list.tasks.each do |task| %>
             <%= task.content %>
           <%end%>
+      <form method="POST" action="/team/<%= list.id %>">
+        <input type="hidden" name="_method" value="DELETE"></input>
+        <input type="hidden" name="team_id" value="<%= @team.id%>"</input>
+        <input type="submit" value="Delete"></input>
+    </form>
           </div>
       <% end %>
 <% end %>
+
+
+  <div class="container">
+    <form method="POST" action="/team/<%= @team.id %>/new">
+      <div>
+        <label>Enter new list title: </label>
+        <input type="text" class="form-group" name="title">
+      </div>
+    </form>
+
+</div>
+    
+
+
 
