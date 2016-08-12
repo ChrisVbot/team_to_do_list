@@ -13,8 +13,7 @@
 
 helpers do
   def current_user
-    @current_user = @current_user || User.find_by(id: session[:user_id])
-    @current_user.id
+    current_user = current_user || User.find_by(id: session[:user_id])
   end
 
   def get_username(input)
