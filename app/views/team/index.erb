@@ -66,7 +66,7 @@
 
 
   <div class="container">
-    <form method="POST" action="/team/<%= @team.id %>/new%20list">
+    <form method="POST" action="/team/<%= @team.id %>/new_list">
       <div>
         <label>Enter new list title: </label>
         <input type="text" class="form-group" name="title">
@@ -76,7 +76,7 @@
 </div>
     
   <div class="container">
-    <form method="POST" action="/team/<%= @team.id %>/member">
+    <form method="POST" action="/team/<%= @team.id %>/new_member">
       <div>
         <label>Add a new member to <%= @team.name %>: </label>
         <input type="text" class="form-group" name="username">
