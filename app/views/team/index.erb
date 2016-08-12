@@ -28,9 +28,16 @@
                   <small>(added by: <%= task.user.username %>)</small>
                 <% end %>
               </li>
+            <!--   <input class="complete_checkbox" type='hidden' name='complete' value='false' /> -->
               <form method="POST" action="/team/<%= task.id %>/check">
-                <input class="complete_checkbox" type='hidden' name='complete' value='false' />
-                <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
+                  <div class="checkboxes">
+                    <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
+                    <% if task.complete == nil %>
+                      <label for='complete'>Complete!</label>
+                    <% else %>
+                      <label for='complete' class="highlight">Complete!</label>
+                    <% end %>
+                  </div>
               </form>
                <form method="POST" action="/team/<%= task.id %>/delete">
                 <input type="hidden" name="_method" value="DELETE"></input>
@@ -64,7 +71,7 @@
 </div>
 
 
-  <div class="container">
+<div class="container">
     <form method="POST" action="/team/<%= @team.id %>/new_list">
       <div>
         <label>Enter new list title: </label>
@@ -74,7 +81,7 @@
     </form>
 </div>
     
-  <div class="container">
+<div class="container">
     <form method="POST" action="/team/<%= @team.id %>/new_member">
       <div>
         <label>Add a new member to <%= @team.name %>: </label>
