@@ -57,6 +57,16 @@ label.highlight {
   padding: 0 0 0 0 ;
 }
 
+.new_team {
+  height: 170px;
+  border-radius: 8px;
+  border-style: solid;
+  margin: 15px 0px 25px 0px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  color: rgba(92,184,92,0.5);
+}
+
 .task_container {
   border-radius: 8px;
   border-style: solid;
@@ -86,21 +96,29 @@ label.highlight {
   color: #5cb85c;
 }
 
-.new_team {
-  height: 170px;
-  border-radius: 8px;
-  border-style: solid;
-  margin: 15px 0px 25px 0px;
-  padding: 10px 0px 10px 0px;
-  text-align: center;
-  color: rgba(92,184,92,0.5);
-}
-
-.user_card:hover, .new_team:hover, .user_link:hover{
+.user_card:hover, .new_team:hover{
   color: black;
   background-color: rgb(92,184,92);
   opacity: 1;
   text-decoration: none
+}
+
+.admin_card {
+  border-radius: 8px;
+  border-style: solid;
+  background-color: #5cb85c;
+  margin-top: 15px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+}
+
+.admin_link {
+  color: black;
+}
+
+.admin_link:hover {
+  text-decoration: none;
+  color: black;
 }
 
 html {
