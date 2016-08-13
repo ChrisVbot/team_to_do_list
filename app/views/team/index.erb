@@ -99,7 +99,7 @@
             <form method="POST" action="/team/<%= task.id %>/check">
               <div class="checkboxes">
                 <% if task.complete == nil %>
-                <input type='checkbox' name='complete' value='true' />
+                <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
                 <span for='complete' class="label" style="color:#777777">Incomplete</span>
                 <% else %>
                 <span for='complete' class="label" style="color:#777777">Complete</span>
