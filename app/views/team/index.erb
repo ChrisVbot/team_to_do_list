@@ -21,6 +21,12 @@
   <% else %>
     <h6> <%= uncompleted - completed %> active to-do lists</h6>
   <% end %>
+  <br>
+  <h6>Oldest priority task: (in #listname)</h6>
+  <h6>Longest outstanding task: (in #listname)</h6>
+  <h6>Most productive member:# has completed # tasks. Great job! </h6>
+  <h6>Alert: @list has 3 or more priority tasks outstanding</h6>
+  <h6>Productiveness of self</h6>
 </div>
 
 <div class="container">
@@ -47,6 +53,15 @@
                       <label for='complete' class="highlight">Complete!</label>
                     <% end %>
                   </div>
+              </form>
+              <form method="POST" action="/team/<%= task.id %>/priority">
+                <div class="checkboxes">
+                  <% if task.priority == nil %>
+                    <input class="complete_checkbox" type="checkbox" name='complete' value='true' />
+                    <label for='complete' class="highlight">Mark as priority</label>
+                  <% else %>
+                    <label for='complete' class="highlight">Priority</label>
+                  <% end %>
               </form>
                <form method="POST" action="/team/<%= task.id %>/delete">
                 <input type="hidden" name="_method" value="DELETE"></input>
