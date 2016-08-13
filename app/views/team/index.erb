@@ -56,12 +56,15 @@
   <% if current_user %>
   <% @team.lists.each do |list| %>
   <div class="col-md-4">
+  <div class="list">
     <% unless list.complete %>
-    <strong><%= list.title %></strong>
-    <small>(<%= list.user.username %>)</small>
+    <h3><%= list.title %>
+    <br>
+    <!-- <small>(<%= list.user.username %>)</small> -->
+    </h3>
 
+    <ul class="team_ul">
     <% list.tasks.each do |task| %>
-    <ul>
 
       <li><%= task.content %>
         <% unless task.user == nil %>
@@ -85,8 +88,8 @@
         <input type="submit" value="Delete Task">
       </form>
 
-    </ul>
-    <%end%> 
+    <% end %>
+    </ul> 
 
     <div id="new_task">
       <form method="POST" action="/team/<%= list.id %>/new">
@@ -110,6 +113,7 @@
       </form>
     </div>
 
+  </div>
   </div>
 
   <% end %>
