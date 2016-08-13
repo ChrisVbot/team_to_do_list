@@ -19,6 +19,9 @@
                     <h6>No active lists</h6>
                   <% else %>
                     <h6>(<%= completed %> of <%= uncompleted %> to-do lists complete)</h6>
+                    <div class="avatar-container p-<%= ((completed.to_f / team.lists.all.count)*100).round %>">
+                      <img src="https://www.playonlinux.com/images/anonymous.png" alt="" class="avatar"/>
+                    </div>
                   <% end %>
             <% end %>
         </h4>

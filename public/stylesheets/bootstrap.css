@@ -22,6 +22,14 @@ Custom classes
   text-align: left;
 }
 
+.checkbox_not_completed {
+
+}
+
+.checkbox_completed {
+
+}
+
 label.highlight {
   font-family:Open Sans Italic;
   font-size: 12px;
@@ -35,16 +43,34 @@ label.highlight {
 .list {
   border-radius: 8px;
   border-style: solid;
-  margin-top: 15px;
+  border-color: black;
+  background-color: #5cb85c;
   padding: 10px 0px 10px 0px;
   text-align: center;
-  color: #5cb85c;
+  margin: 0 0 50px 0;
+  /*box-sizing: border-box;*/
+}
+
+.team_ul {
+  margin: 25px 0 40px 0;
+  list-style: none;
+  padding: 0 0 0 0 ;
 }
 
 .task {
-  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+.task_container {
+  border-radius: 8px;
   border-style: solid;
-  margin: 5px 2px 5px 2px;
+  border-color: black;
+  background-color: white;
+  margin: 20px 50px 20px 50px;
+}
+
+.task_container:hover {
+  background-color: #5cb85c;
 }
 
 .user_card {
