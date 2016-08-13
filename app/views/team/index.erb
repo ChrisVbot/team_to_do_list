@@ -20,7 +20,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6" style="margin: 10px 0 10px 0">
-      
+
       <form method="POST" action="/team/<%= @team.id %>/new_member">
         <div>
           <label>Add a new member to <%= @team.name %>: </label>
@@ -28,7 +28,7 @@
           <input type="hidden" name="team_id" value="<%=@team.id%>">
         </div>
       </form>
-    
+
     </div>
   </div>
 </div>
@@ -37,7 +37,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6" style="margin: 10px 0 10px 0">
-      
+
       <form method="POST" action="/team/<%= @team.id %>/new_list">
         <div>
           <label>Enter new list title: </label>
@@ -56,64 +56,68 @@
   <% if current_user %>
   <% @team.lists.each do |list| %>
   <div class="col-md-4">
-  <div class="list">
-    <% unless list.complete %>
-    <h3><%= list.title %>
-    <br>
-    <!-- <small>(<%= list.user.username %>)</small> -->
-    </h3>
+    <div class="list">
+      <% unless list.complete %>
+      <h3><%= list.title %>
+        <br>
+        <!-- <small>(<%= list.user.username %>)</small> -->
+      </h3>
 
-    <ul class="team_ul">
-    <% list.tasks.each do |task| %>
+      <ul class="team_ul">
+        <% list.tasks.each do |task| %>
+        <li style="margin-bottom:25px;">
 
-      <li><%= task.content %>
-        <% unless task.user == nil %>
-        <small>(added by: <%= task.user.username %>)</small>
+        <h4>
+          <%= task.content %>
+          <% unless task.user == nil %>
+          <small>(<%= task.user.username %>)</small>
+        </h4>
+
         <% end %>
-      </li>
 
-      <form method="POST" action="/team/<%= task.id %>/check">
-        <div class="checkboxes">
-          <% if task.complete == nil %>
-          <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
-          <label for='complete'>Complete!</label>
-          <% else %>
-          <label for='complete' class="highlight">Complete!</label>
-          <% end %>
-        </div>
-      </form>
+        <form method="POST" action="/team/<%= task.id %>/check">
+          <div class="checkboxes">
+            <% if task.complete == nil %>
+            <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
+            <label for='complete'>Complete!</label>
+            <% else %>
+            <label for='complete' class="highlight">Complete!</label>
+            <% end %>
+          </div>
+        </form>
 
-      <form method="POST" action="/team/<%= task.id %>/delete">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete Task">
-      </form>
+        <form method="POST" action="/team/<%= task.id %>/delete">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete Task">
+        </form>
 
-    <% end %>
-    </ul> 
+        </li>
+        <% end %>
+      </ul> 
 
-    <div id="new_task">
-      <form method="POST" action="/team/<%= list.id %>/new">
-        <label>Enter new task: </label>
-        <input type="text" class="form-group" name="content">
-        <input type="hidden" name="user_id" value="<%=current_user.id%>">
-      </form>
+      <div id="new_task">
+        <form method="POST" action="/team/<%= list.id %>/new">
+          <label>Enter new task: </label>
+          <input type="text" class="form-group" name="content">
+          <input type="hidden" name="user_id" value="<%=current_user.id%>">
+        </form>
+      </div>
+
+      <div id ="complete">
+        <form method="POST" action="/team/<%= list.id %>/complete">
+          <input type="submit" value="List Complete">
+        </form>
+      </div>
+
+      <div id="delete">
+        <form method="POST" action="/team/<%= list.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="hidden" name="team_id" value="<%= @team.id%>">
+          <input type="submit" value="Delete List">
+        </form>
+      </div>
+
     </div>
-
-    <div id ="complete">
-      <form method="POST" action="/team/<%= list.id %>/complete">
-        <input type="submit" value="List Complete">
-      </form>
-    </div>
-
-    <div id="delete">
-      <form method="POST" action="/team/<%= list.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="team_id" value="<%= @team.id%>">
-        <input type="submit" value="Delete List">
-      </form>
-    </div>
-
-  </div>
   </div>
 
   <% end %>
