@@ -60,16 +60,18 @@
       <% unless list.complete %>
       <h3><%= list.title %>
         <br>
-        <!-- <small>(<%= list.user.username %>)</small> -->
+        <small>(<%= list.user.username %>)</small>
       </h3>
 
       <ul class="team_ul">
         <% list.tasks.each do |task| %>
-        <li style="margin-bottom:25px;">
+        <div class="task_container">
+        <li class="task">
 
         <h4>
           <%= task.content %>
           <% unless task.user == nil %>
+          <br>
           <small>(<%= task.user.username %>)</small>
         </h4>
 
@@ -78,10 +80,10 @@
         <form method="POST" action="/team/<%= task.id %>/check">
           <div class="checkboxes">
             <% if task.complete == nil %>
-            <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
-            <label for='complete'>Complete!</label>
+            <input type='checkbox' name='complete' value='true' />
+            <span for='complete' class="label" style="color:#999999">Incomplete</span>
             <% else %>
-            <label for='complete' class="highlight">Complete!</label>
+            <span for='complete' class="label" style="color:#999999">Complete</span>
             <% end %>
           </div>
         </form>
@@ -92,6 +94,7 @@
         </form>
 
         </li>
+        </div>
         <% end %>
       </ul> 
 
