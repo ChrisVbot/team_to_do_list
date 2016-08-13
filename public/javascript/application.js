@@ -29,4 +29,3 @@ $('.avatar-container').on('click',function(){
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 });
-
