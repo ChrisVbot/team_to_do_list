@@ -118,7 +118,8 @@ end
 post '/team/:task_id/check' do
   @task = Task.find params[:task_id]
   @task.complete = params[:complete]
-  
+  @task.completed_by = current_user.username
+  @task.completion_date = DateTime.now
   if @task.save
     redirect back
   else
