@@ -13,6 +13,15 @@
 <% end %>
 </div>
 
+<div class="priority_box">
+  <% completed = @team.lists.all.count('complete') %>
+  <% uncompleted = @team.lists.all.count(:conditions => "complete == nil") %>
+  <% if @team.lists.all.count == 0 || completed == uncompleted %>
+    <h6>No active lists</h6>
+  <% else %>
+    <h6><%= completed %> of <%= uncompleted %> to-do lists complete
+  <% end %>
+</div>
 
 <div class="container">
   <% if current_user %>

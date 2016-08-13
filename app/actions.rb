@@ -15,12 +15,13 @@ helpers do
   def current_user
     current_user = current_user || User.find_by(id: session[:user_id])
   end
-
-end
   
   def admin
     admin = admin || User.find_by(id: session[:admin])
   end
+
+end
+
 
 get '/' do
   erb :index
