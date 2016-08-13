@@ -5,4 +5,5 @@ class Task < ActiveRecord::Base
   belongs_to :team
   
   validates :content, presence: true
+
 end 

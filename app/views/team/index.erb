@@ -33,6 +33,23 @@
   </div>
 </div>
 
+<div class="priority_box">
+  <% completed = @team.lists.all.count('complete') %>
+  <% uncompleted = @team.lists.all.count(:conditions => "complete == nil") %>
+  <% if @team.lists.all.count == 0 || completed == uncompleted %>
+    <h6>No active lists</h6>
+  <% else %>
+    <h6> <%= uncompleted - completed %> active to-do lists</h6>
+  <% end %>
+</div>
+  
+
+
+
+
+
+
+
 
 <div class="container">
   <div class="row">
@@ -87,18 +104,30 @@
                 <% else %>
                 <span for='complete' class="label" style="color:#777777">Complete</span>
                 <% end %>
+
               </div>
             </form>
+            
+              <form method="POST" action="/team/<%= task.id %>/priority">
+                <div class="checkboxes">
+                  <% if task.priority == nil %>
+                    <input class="complete_checkbox" type="checkbox" name='complete' value='true' />
+                    <label for='complete' class="highlight">Mark as priority</label>
+                  <% else %>
+                    <label for='complete' class="highlight">Priority</label>
+                  <% end %>
+              </form>       
 
             <form method="POST" action="/team/<%= task.id %>/delete">
               <input type="hidden" name="_method" value="DELETE">
               <input type="submit" value="Delete Task">
             </form>
-
+   
           </li>
         </div>
-        <% end %>
       </ul> 
+      <% end %>
+
 
       <div id="new_task">
         <form method="POST" action="/team/<%= list.id %>/new">

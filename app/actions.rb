@@ -15,12 +15,13 @@ helpers do
   def current_user
     current_user = current_user || User.find_by(id: session[:user_id])
   end
-
-end
   
   def admin
     admin = admin || User.find_by(id: session[:admin])
   end
+
+end
+
 
 get '/' do
   erb :index
@@ -117,8 +118,20 @@ end
 post '/team/:task_id/check' do
   @task = Task.find params[:task_id]
   @task.complete = params[:complete]
-  
+  @task.completed_by = current_user.username
+  @task.completion_date = DateTime.now
   if @task.save
+    redirect back
+  else
+    redirect back
+  end
+end
+
+post '/team/:task_id/priority' do
+  task = Task.find params[:task_id]
+  task.priority = true
+  task.date_priority_assigned = DateTime.now
+  if task.save
     redirect back
   else
     redirect back
