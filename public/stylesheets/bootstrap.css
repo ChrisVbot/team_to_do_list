@@ -9,7 +9,7 @@
 Custom classes
 */
 .content {
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .checkboxes label {
@@ -57,20 +57,23 @@ label.highlight {
   padding: 0 0 0 0 ;
 }
 
-.task {
-  margin-bottom: 25px;
-}
-
 .task_container {
   border-radius: 8px;
   border-style: solid;
   border-color: black;
   background-color: white;
+  color: black;
   margin: 20px 50px 20px 50px;
 }
 
 .task_container:hover {
   background-color: #5cb85c;
+  border-color: black;
+  color: black;
+}
+
+.task {
+  margin-bottom: 25px;
 }
 
 .user_card {
