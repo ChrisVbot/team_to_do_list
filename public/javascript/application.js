@@ -32,10 +32,6 @@ $('.avatar-container').on('click',function(){
   $info.toggleClass('js-active');
 });
 
-// $( '.checkboxes' ).on( 'click', 'input:checkbox', function () {
-//     $( this ).next('label').toggleClass( 'highlight', this.checked );
-// });
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 });
 

@@ -48,6 +48,9 @@ label.highlight {
   padding: 10px 0px 10px 0px;
   text-align: center;
   margin: 0 0 50px 0;
+  max-height:500px;
+  min-height:500px;
+  overflow-y:auto;
   /*box-sizing: border-box;*/
 }
 
@@ -94,6 +97,8 @@ label.highlight {
   padding: 10px 0px 10px 0px;
   text-align: center;
   color: #5cb85c;
+  max-width:100%;
+  overflow-x:auto;
 }
 
 .user_card:hover, .new_team:hover{
