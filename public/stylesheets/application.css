@@ -1,37 +1,35 @@
 .jumbotron {
-    margin: 0px;
-    margin-left: -2%;
     color: #2F4F4F;
     font-family: Helvetica, Arial, sans-serif;
-    width: 73%;
-    max-width:73%;
+    width: 100%;
+    max-width:100%;
     background-size: cover;
     background-color: transparent;
     background-image: url("http://coolblackppt.com/wp-content/uploads/light-green-diagonal-stripes-background-seamless.gif");
     height: 300px;
     float:left;
     display:inline-block;
-    position: absolute;
+    position: relative;
+    right:2%;
 }
-
 .team_list{
   font-family: Helvetica, Arial, sans-serif;
   float: right;
-  position: relative;
   display:inline-block;
-  clear: left;
-  width: 22%;
+  width: 25%;
+  position:relative;
+  bottom: 120%;
+  left: 4%;
 }
 .list-group{
-    max-height: 300px;
-    overflow-y:scroll;
-    position: relative;
-    float:right;
+    max-height: 290px;
+    overflow-y:auto;
 }
 .list_img {
   width: 50px;
   height: 50px;
 }
+
 .avatar-container {
   position: relative;
   display: block;
