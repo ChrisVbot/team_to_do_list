@@ -17,12 +17,12 @@
   float: right;
   display:inline-block;
   width: 25%;
-  position:relative;
-  bottom: 120%;
-  left: 4%;
+  position:absolute;
+  left: 70%;
+  bottom:10%;
 }
 .list-group{
-    max-height: 290px;
+    max-height: 299px;
     overflow-y:auto;
 }
 .list_img {
