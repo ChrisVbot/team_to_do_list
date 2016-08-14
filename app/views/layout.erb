@@ -59,6 +59,9 @@
   </div>
   <div class="container" style="margin-bottom: 40px">
     <div class="content">
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
       <%= yield %>
     </div>
   </div>

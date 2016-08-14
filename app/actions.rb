@@ -41,11 +41,11 @@ post '/user/:id/new' do
   if @team.save
     new_team = user.pairings.create(team: @team)
     if new_team.persisted?
-    #flash - thanks for creating a team
+      flash[:notice] = "Thanks for creating a new team!"
       redirect "/user/#{user.id}"
     end
   else
-    #flash 
+      flash[:notice] = "Something went wrong. Try again"
       redirect back 
   end
 end
@@ -56,7 +56,7 @@ get '/team/:team_id' do
   erb :'team/index'
 end  
 
-#TODO implement user_id into list submission
+
 post '/team/:team_id/new_list' do
   @team = Team.find params[:team_id]
   @list = List.new(
@@ -65,7 +65,7 @@ post '/team/:team_id/new_list' do
     )
     @list.team_id = @team.id
     if @list.save
-      #flash - team saved
+      flash[:notice] = "New list created"
       redirect "/team/#{@team.id}"
     else
       redirect "/team/#{@team.id}"
@@ -145,9 +145,10 @@ post '/team/:team_id/new_member' do
     if new_team_member[0] == nil
       redirect "/team/#{team.id}"
     elsif team.users.ids.include? new_team_member[0].id
-      #flash - user already on this team
+      flash[:notice] = "#{new_team_member[0].username} is already on this team!"
       redirect "/team/#{team.id}"
     elsif new_team_member[0].pairings.create(team: team)
+      flash[:notice] = "#{new_team_member[0].username} has been added to the team"
       redirect "/team/#{team.id}"
     else
       redirect "team/#{team.id}"
