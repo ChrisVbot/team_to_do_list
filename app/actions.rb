@@ -143,6 +143,7 @@ post '/team/:team_id/new_member' do
   team = Team.find params[:team_id]
   new_team_member = User.where(username: params[:username])
     if new_team_member[0] == nil
+      flash[:notice] = "User not found"
       redirect "/team/#{team.id}"
     elsif team.users.ids.include? new_team_member[0].id
       flash[:notice] = "#{new_team_member[0].username} is already on this team!"
