@@ -103,13 +103,13 @@ label.highlight {
   text-decoration: none
 }
 
-.admin_card {
+.admin_container {
   border-radius: 8px;
   border-style: solid;
-  background-color: #5cb85c;
-  margin-top: 15px;
-  padding: 10px 0px 10px 0px;
-  text-align: center;
+  border-color: black;
+  background-color: white;
+  color: black;
+  margin: 20px 50px 20px 50px;
 }
 
 .admin_link {
