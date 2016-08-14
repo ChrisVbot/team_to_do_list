@@ -7,7 +7,7 @@
       <% completed = @team.lists.all.count('complete') %>
       <% uncompleted = @team.lists.all.count(:conditions => "complete == nil") %>
       <% if @team.lists.all.count == 0 || completed == uncompleted %>
-        <h6>No active lists</h6>
+        <h4>No active lists</h4>
       <% else %>
         <h4> <%= uncompleted - completed %> active to-do lists</h4>
         <% end %>
@@ -16,16 +16,16 @@
           <input type="text" class="form-group input-sm" name="title">
           <input type="hidden" name="user_id" value="<%=current_user.id%>">
       </form>
-          <div class="team_list">
+      <form method="POST" action="/team/<%= @team.id %>/new_member"><label><h4>Add new member</h4></label>
+        <input type="text" class="form-group input-sm" name="username">
+        <input type="hidden" name="team_id" value="<%=@team.id%>">
+      </form>
+      <div class="team_list">
       <ul class="list-group">
         <li class="list-group-item active"><strong>Team members</strong></li>
         <% @team.users.each do |name| %>
           <li class="list-group-item"><%= name.username %></li>
         <% end %>
-        <li class="list-group-item"><form method="POST" action="/team/<%= @team.id %>/new_member">Add a new member to <%= @team.name %>: 
-          <input type="text" class="form-group" name="username">
-          <input type="hidden" name="team_id" value="<%=@team.id%>">
-        </form>
         </li>
       </ul>
     </div>
