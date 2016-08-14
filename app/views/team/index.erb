@@ -2,71 +2,34 @@
   <div class="row">
 
     <% if current_user %>
-    <div class ="col-md-3">
-      <h1><%= @team.name %></h1>
-    </div>
+      <div class ="jumbotron">
+        <h1><%= @team.name %></h1>
+        <% completed = @team.lists.all.count('complete') %>
+        <% uncompleted = @team.lists.all.count(:conditions => "complete == nil") %>
+        <% if @team.lists.all.count == 0 || completed == uncompleted %>
+          <h6>No active lists</h6>
+        <% else %>
+          <h4> <%= uncompleted - completed %> active to-do lists</h4>
+        <% end %>
+      </div>
     <% end %>
 
-    <% @team.users.each do |name| %>
-    <div class="col-md-1" style="margin-top:20px">
-      <h4><%= name.username %></h4>
-    </div>
-    <% end %>
-
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6" style="margin: 10px 0 10px 0">
-
-      <form method="POST" action="/team/<%= @team.id %>/new_member">
-        <div>
-          <label>Add a new member to <%= @team.name %>: </label>
+    <div class="team_list">
+      <ul class="list-group">
+        <li class="list-group-item active"><strong>Team members</strong></li>
+        <% @team.users.each do |name| %>
+          <li class="list-group-item"><%= name.username %></li>
+        <% end %>
+        <li class="list-group-item"><form method="POST" action="/team/<%= @team.id %>/new_member">Add a new member to <%= @team.name %>: 
           <input type="text" class="form-group" name="username">
           <input type="hidden" name="team_id" value="<%=@team.id%>">
-        </div>
-      </form>
-
+        </form>
+        </li>
+      </ul>
     </div>
+
   </div>
 </div>
-
-<div class="priority_box">
-  <% completed = @team.lists.all.count('complete') %>
-  <% uncompleted = @team.lists.all.count(:conditions => "complete == nil") %>
-  <% if @team.lists.all.count == 0 || completed == uncompleted %>
-    <h6>No active lists</h6>
-  <% else %>
-    <h6> <%= uncompleted - completed %> active to-do lists</h6>
-  <% end %>
-</div>
-  
-
-
-
-
-
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6" style="margin: 10px 0 10px 0">
-
-      <form method="POST" action="/team/<%= @team.id %>/new_list">
-        <div>
-          <label>Enter new list title: </label>
-          <input type="text" class="form-group" name="title">
-          <input type="hidden" name="user_id" value="<%=current_user.id%>">
-        </div>
-      </form>
-
-    </div>
-  </div>
-</div>
-
 
 <div class="container" style="margin-top: 15px">
 
@@ -78,9 +41,15 @@
   <div class="col-md-4">
     <div class="list">
       <h3><%= list.title %>
-        <br>
+      <% if list.tasks.all.count == 0 %>
+      <br>
+      <small>No tasks for this list</small>
+      <% end %>
+      <br>
         <small>(<%= list.user.username %>)</small>
       </h3>
+
+
 
       <ul class="team_ul">
         <% list.tasks.order(date_priority_assigned: :desc).each do |task| %>
@@ -133,6 +102,7 @@
           <label>Enter new task: </label>
           <input type="text" class="form-group" name="content">
           <input type="hidden" name="user_id" value="<%=current_user.id%>">
+
         </form>
       </div>
 
@@ -156,5 +126,14 @@
   <% end %>
   <% end %>
   <% end %>
-  
+  <div class="col-md-4">
+    <div class="list" id="list">
+        <form method="POST" action="/team/<%= @team.id %>/new_list">
+          <br> <label><h4>Create a new list</h4></label><br>
+          <input type="text" class="form-group input-sm" name="title">
+          <input type="hidden" name="user_id" value="<%=current_user.id%>">
+        </form>
+    </div>
+  </div>
+
 </div>
