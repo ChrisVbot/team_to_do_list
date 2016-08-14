@@ -9,6 +9,15 @@ $(".complete_checkbox").click(function() {
 
 });
 
+$(".priority_checkbox").click(function() { 
+  if($(this).is(":checked"))
+{
+  $(this).closest("form").submit();
+
+  }
+
+});
+
 $('.avatar-container').on('click',function(){
   
   if ($(this).find('.info').length <= 0) {
