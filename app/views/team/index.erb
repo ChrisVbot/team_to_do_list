@@ -67,7 +67,7 @@
 
             <% end %>
         
-            </div>
+            
             <form method="POST" action="/team/<%= task.id %>/check">
               <div class="checkboxes" id="task_complete">
                 <% if task.completion_date == nil %>
@@ -107,9 +107,7 @@
             </form>
             </div>
    
-          </li>
-       
-      </ul> 
+     </div>
       <% end %>
       <div id="new_task">
         <form method="POST" action="/team/<%= list.id %>/new">

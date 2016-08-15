@@ -41,19 +41,19 @@ button {
 }
 #task_complete {
   position:relative;
-  right:30%;
+  right:40%;
   display:inline-block;
-  bottom:95px;
+  bottom:25px;
 }
 #deleted {
   position:relative;
-  left:30%;
+  left:40%;
   display:inline-block;
-  bottom:150px;
+  bottom:88px;
 }
 #priority{
   position:relative;
-  bottom:80px;
+  bottom:35px;
 }
 
 #complete {
