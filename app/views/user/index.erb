@@ -7,8 +7,8 @@
   <a class="user_link" href="/team/<%= team.id %>">
     <div class="user_card">
       <h1> <%= team.name %> </h1>
-      <% completed = team.lists.all.count('complete') %>
-        <% uncompleted = team.lists.all.count(:conditions => "complete == nil") %>
+        <% completed = team.lists.all.count('complete') %>
+        <% uncompleted = team.lists.all.count(:conditions == "complete == nil") %>
         <% if team.lists.all.count == 0 %>
           <h6>No active lists</h6>
           <img style="border-radius: 50%;" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/check-circle-green-128.png" alt="" class="avatar"/>

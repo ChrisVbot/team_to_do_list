@@ -5,7 +5,7 @@
     <div class ="jumbotron">
       <h1><%= @team.name %></h1>
       <% completed = @team.lists.all.count('complete') %>
-      <% uncompleted = @team.lists.all.count(:conditions => "complete == nil") %>
+      <% uncompleted = @team.lists.all.count(:conditions == "complete == nil") %>
       <% if @team.lists.all.count == 0 || completed == uncompleted %>
         <h4>No active lists</h4>
       <% else %>
