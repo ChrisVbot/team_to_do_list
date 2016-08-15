@@ -9,7 +9,6 @@ button {
 }
 
 
-
 .task_container:hover{
   background-color:white;
 }
@@ -22,17 +21,17 @@ button {
   position:relative;
   right:30%;
   display:inline-block;
-  bottom:94px;
+  bottom:90px;
 }
 #deleted {
   position:relative;
   left:30%;
   display:inline-block;
-  bottom:155px;
+  bottom:150px;
 }
 #priority{
   position:relative;
-  bottom:95px;
+  bottom:80px;
 }
 
 #complete {
