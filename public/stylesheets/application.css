@@ -1,3 +1,43 @@
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+
+.task_container #task_complete {
+  position:relative;
+  right:35%;
+  display:inline-block;
+  bottom:50px;
+}
+.task_container #deleted {
+  position:relative;
+  left:35%;
+  display:inline-block;
+  bottom:110px;
+}
+.task_container #priority{
+  position:relative;
+  bottom:30px;
+}
+
+#complete {
+  position: absolute;
+  top: 75%;
+  left:8%;
+}
+
+#delete {
+  position:absolute;
+  top:75%;
+  right:8%;
+}
+
+
 .jumbotron {
     color: #2F4F4F;
     font-family: Helvetica, Arial, sans-serif;

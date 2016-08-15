@@ -77,6 +77,7 @@ label.highlight {
   background-color: white;
   color: black;
   margin: 20px 50px 20px 50px;
+  height:100px;
 }
 
 .task_container:hover {
