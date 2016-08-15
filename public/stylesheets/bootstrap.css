@@ -96,11 +96,11 @@ label.highlight {
   overflow-x:auto;
 }
 
-.user_card:hover, .new_team:hover{
+.user_card:hover, .new_team:hover, .user_link:hover{
   color: black;
   background-color: rgb(92,184,92);
   opacity: 1;
-  text-decoration: none
+  text-decoration: none;
 }
 
 .admin_container {
