@@ -1,3 +1,53 @@
+
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+
+
+.task_container:hover{
+  background-color:white;
+}
+
+.task_container {
+  max-width:100%;
+  overflow-x:auto;
+}
+#task_complete {
+  position:relative;
+  right:30%;
+  display:inline-block;
+  bottom:94px;
+}
+#deleted {
+  position:relative;
+  left:30%;
+  display:inline-block;
+  bottom:155px;
+}
+#priority{
+  position:relative;
+  bottom:95px;
+}
+
+#complete {
+  position: absolute;
+  top: 75%;
+  left:8%;
+}
+
+#delete {
+  position:absolute;
+  top:75%;
+  right:8%;
+}
+
+
 .jumbotron {
     color: #2F4F4F;
     font-family: Helvetica, Arial, sans-serif;

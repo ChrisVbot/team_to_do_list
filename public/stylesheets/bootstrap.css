@@ -22,13 +22,7 @@ Custom classes
   text-align: left;
 }
 
-.checkbox_not_completed {
 
-}
-
-.checkbox_completed {
-
-}
 
 label.highlight {
   font-family:Open Sans Italic;
@@ -77,6 +71,7 @@ label.highlight {
   background-color: white;
   color: black;
   margin: 20px 50px 20px 50px;
+  height:100px;
 }
 
 .task_container:hover {
@@ -1739,6 +1734,7 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;

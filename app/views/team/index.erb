@@ -22,7 +22,7 @@
       </form>
       <div class="team_list">
       <ul class="list-group">
-        <li class="list-group-item active"><strong>Team members</strong></li>
+        <li class="list-group-item list-group-item-success" color=""><strong>Team members</strong></li>
         <% @team.users.each do |name| %>
           <li class="list-group-item"><%= name.username %></li>
         <% end %>
@@ -32,14 +32,10 @@
     </div>
     <% end %>
 
-
-
   </div>
 </div>
 
 <div class="container">
-
-  <span clas="glyphicon glyphicon-play"></span>
 
   <% if current_user %>
   <% @team.lists.each do |list| %>
@@ -52,85 +48,98 @@
       <small>No tasks for this list</small>
       <% end %>
       <br>
-        <small>(<%= list.user.username %>)</small>
+        <small>(posted by: <%= list.user.username %>)</small>
       </h3>
-
-
+  
 
       <ul class="team_ul">
         <% list.tasks.order(date_priority_assigned: :desc).each do |task| %>
         <div class="task_container">
-          <li class="task">
             <h4>
               <%= task.content %>
               <% unless task.user == nil %>
               <br>
-              <small>(<%= task.user.username %>)</small>
+              <small>(added by: <%= task.user.username %>)</small>
             </h4>
 
             <% end %>
-
+        
+            </div>
             <form method="POST" action="/team/<%= task.id %>/check">
-              <div class="checkboxes">
+              <div class="checkboxes" id="task_complete">
                 <% if task.complete == nil %>
-                <input class="complete_checkbox" type='checkbox' name='complete' value='true' />
-                <span for='complete' class="label" style="color:#777777">Incomplete</span>
+                <button type="submit">
+                  <span style="font-size: 1.5em"
+                  class="glyphicon glyphicon-ok-sign">
+                </button>
+                </span>
                 <% else %>
-                <span for='complete' class="label" style="color:#777777">Complete</span>
+                  <span style="font-size: 1.5em; color: green;" class="glyphicon glyphicon-ok-sign highlight">
+                  </span>
                 <% end %>
-
               </div>
             </form>
             
               <form method="POST" action="/team/<%= task.id %>/priority">
-                <div class="checkboxes">
+                <div class="checkboxes" id="priority">
                   <% if task.priority == nil %>
-                    <input class="priority_checkbox" type="checkbox" name='priority' value='true' />
-                    <label for='priority' class="highlight">Mark as priority</label>
+                    <button type="submit">
+                    <span style="font-size: 1.5em;" class="glyphicon glyphicon-exclamation-sign">
+                    </button>
+                    </span>
                   <% else %>
-                    <label for='priority' class="highlight">Priority</label>
+                     <span style="font-size: 1.5em; color: #FFA500;" class="glyphicon glyphicon-exclamation-sign highlight">
+                    </span>
                   <% end %>
+                  </div>
               </form>       
-
+            <div id="deleted">
             <form method="POST" action="/team/<%= task.id %>/delete">
               <input type="hidden" name="_method" value="DELETE">
-              <input type="submit" value="Delete Task">
+              <button type="submit">
+                <span style="font-size: 1.5em;" class="glyphicon glyphicon-remove">
+              </button>  
+              </span>
             </form>
+            </div>
    
           </li>
-        </div>
+       
       </ul> 
       <% end %>
-
-
       <div id="new_task">
         <form method="POST" action="/team/<%= list.id %>/new">
-          <label>Enter new task: </label>
+          <h6><label>Enter new task: </label></h6>
           <input type="text" class="form-group" name="content">
           <input type="hidden" name="user_id" value="<%=current_user.id%>">
-
         </form>
       </div>
 
       <div id ="complete">
         <form method="POST" action="/team/<%= list.id %>/complete">
-          <input type="submit" value="List Complete">
+        <button type="submit">
+         <span style="font-size: 5em;" class="glyphicon glyphicon-ok">
+        </button>
+        </span>
         </form>
       </div>
 
       <div id="delete">
         <form method="POST" action="/team/<%= list.id %>">
           <input type="hidden" name="_method" value="DELETE">
+          <button type="submit">
           <input type="hidden" name="team_id" value="<%= @team.id%>">
-          <input type="submit" value="Delete List">
+           <span style="font-size: 5em;" class="glyphicon glyphicon-remove">
+          </button>
+          </span>
         </form>
       </div>
-
     </div>
   </div>
 
   <% end %>
   <% end %>
   <% end %>
+
   
 </div>
