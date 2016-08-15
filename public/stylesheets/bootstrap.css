@@ -9,6 +9,18 @@
 Custom classes
 */
 
+.glyphicon-exclamation-sign:hover{
+  color:#FFA500;
+}
+
+.glyphicon-remove:hover{
+  color:#FF0000;
+}
+
+.glyphicon-ok:hover{
+  color:green;
+}
+
 button {
     background-color: Transparent;
     background-repeat:no-repeat;
@@ -31,7 +43,7 @@ button {
   position:relative;
   right:30%;
   display:inline-block;
-  bottom:90px;
+  bottom:95px;
 }
 #deleted {
   position:relative;
