@@ -1,3 +1,4 @@
+
 button {
     background-color: Transparent;
     background-repeat:no-repeat;
@@ -8,21 +9,30 @@ button {
 }
 
 
-.task_container #task_complete {
-  position:relative;
-  right:35%;
-  display:inline-block;
-  bottom:50px;
+
+.task_container:hover{
+  background-color:white;
 }
-.task_container #deleted {
-  position:relative;
-  left:35%;
-  display:inline-block;
-  bottom:110px;
+
+.task_container {
+  max-width:100%;
+  overflow-x:auto;
 }
-.task_container #priority{
+#task_complete {
   position:relative;
-  bottom:30px;
+  right:30%;
+  display:inline-block;
+  bottom:94px;
+}
+#deleted {
+  position:relative;
+  left:30%;
+  display:inline-block;
+  bottom:155px;
+}
+#priority{
+  position:relative;
+  bottom:95px;
 }
 
 #complete {
