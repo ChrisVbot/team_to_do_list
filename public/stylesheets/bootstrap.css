@@ -623,7 +623,7 @@ label.highlight {
 }
 
 .task_container:hover {
-  background-color: #5cb85c;
+  background-color: white;
   border-color: black;
   color: black;
 }
