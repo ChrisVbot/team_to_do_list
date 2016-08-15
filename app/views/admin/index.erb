@@ -12,7 +12,7 @@
       <div class="admin_container">
         <a class="admin_link" href="/team/<%= team.id %>"<p><%= team.name %></a>
         <% completed = team.lists.all.count('complete') %>
-        <% uncompleted = team.lists.all.count(:conditions => "complete == nil") %>
+        <% uncompleted = team.lists.all.count(:conditions == "complete == nil") %>
 
         <% if team.lists.all.count == 0 %>
         <h6>No active lists</h6>

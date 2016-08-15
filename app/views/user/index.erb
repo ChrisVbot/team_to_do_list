@@ -1,7 +1,5 @@
 
-<div class="container">
-  <div style="height:100px;"></div>
-</div>
+
 
 <div class="container">
   <% Team.where(id: @user.teams).find_each do |team| %>
@@ -9,6 +7,17 @@
   <a class="user_link" href="/team/<%= team.id %>">
     <div class="user_card">
       <h1> <%= team.name %> </h1>
+        <% completed = team.lists.all.count('complete') %>
+        <% uncompleted = team.lists.all.count(:conditions == "complete == nil") %>
+        <% if team.lists.all.count == 0 %>
+          <h6>No active lists</h6>
+          <img style="border-radius: 50%;" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/check-circle-green-128.png" alt="" class="avatar"/>
+        <% else %>
+          <h6>(<%= completed %> of <%= uncompleted %> to-do lists complete)</h6>
+        <div class="avatar-container p-<%= ((completed.to_f / team.lists.all.count)*100).round %>">
+          <img src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/check-circle-green-128.png" alt="" class="avatar"/>
+        </div>
+        <% end %>
     </div>
   </a>
   </div>
