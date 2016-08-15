@@ -90,7 +90,9 @@ button {
   width: 25%;
   position:absolute;
   left: 70%;
-  bottom:10%;
+  bottom:0.5%;
+  max-height:299px;
+  overflow-y:auto;
 }
 .list-group{
     max-height: 299px;
