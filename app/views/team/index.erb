@@ -60,6 +60,9 @@
               <% unless task.user == nil %>
               <br>
               <small>(added by: <%= task.user.username %>)</small>
+              <% if task.completion_date %>
+                <br><small>(completed by: <%= task.completed_by %>)</small>
+                <% end %>
             </h4>
 
             <% end %>
@@ -67,7 +70,7 @@
             </div>
             <form method="POST" action="/team/<%= task.id %>/check">
               <div class="checkboxes" id="task_complete">
-                <% if task.complete == nil %>
+                <% if task.completion_date == nil %>
                 <button type="submit">
                   <span style="font-size: 1.5em"
                   class="glyphicon glyphicon-ok-sign">
@@ -76,6 +79,7 @@
                 <% else %>
                   <span style="font-size: 1.5em; color: green;" class="glyphicon glyphicon-ok-sign highlight">
                   </span>
+              
                 <% end %>
               </div>
             </form>
